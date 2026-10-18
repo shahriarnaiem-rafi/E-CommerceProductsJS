@@ -22,7 +22,7 @@
     />
   </head>
   <body>
-    <nav class="w-[1200px] mx-auto">
+    <nav class="md:w-[1200px] mx-auto">
       <div class="navbar">
         <div class="navbar-start">
           <div class="dropdown">
@@ -49,7 +49,7 @@
             >
               <li><a>Home</a></li>
 
-              <li><a>Products</a></li>
+              <li><a href="./products.html">Products</a></li>
               <li><a>About</a></li>
               <li><a>Contact</a></li>
             </ul>
@@ -60,7 +60,7 @@
           <ul class="menu menu-horizontal px-1 text-xl text-gray-500">
             <li><a>Home</a></li>
 
-            <li><a>Products</a></li>
+            <li><a href="./products.html">Products</a></li>
             <li><a>About</a></li>
             <li><a>Contact</a></li>
           </ul>
@@ -79,7 +79,7 @@
         style="background-image: url(./Assets/banner-image.png)"
       >
         <div class="hero-overlay"></div>
-        <div class="text-white mr-[650px]">
+        <div class="text-white  md:text-white md:mr-[650px] ">
           <div class="">
             <h1 class="mb-5 text-5xl font-bold">Best Collection For You</h1>
             <p class="mb-5">
@@ -100,7 +100,7 @@
           We probide the best experience with top noth services
         </p>
       </div>
-      <div class="w-[1200px] mx-auto grid md:grid-cols-4 gap-10">
+      <div class="md:w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
         <div class="card card-md shadow-sm">
           <div class="card-body bg-white rounded-xl">
             <div
@@ -161,11 +161,17 @@
       </div>
     </section>
 
+    <!-- products section -->
+    <section class="md:w-[1200px] mx-auto mt-10 mb-10">
+      <h2 class="font-bold text-4xl mb-5">Trending Now</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 md:gap-5" id="cardBody">
+        
+      </div>
+    </section>
+
     <footer class="bg-blue-950">
-      <section class="w-[1200px] mx-auto text-gray-200">
-        <footer
-          class="footer sm:footer-horizontal  p-10"
-        >
+      <section class="md:w-[1200px] mx-auto text-gray-200">
+        <footer class="footer sm:footer-horizontal p-10">
           <nav class="text-gray-400">
             <h6 class="footer-title">Services</h6>
             <a class="link link-hover">Branding</a>
@@ -202,9 +208,7 @@
           </form>
         </footer>
 
-        <footer
-          class="footer sm:footer-horizontal     items-center p-4"
-        >
+        <footer class="footer sm:footer-horizontal items-center p-4">
           <aside class="grid-flow-col items-center">
             <svg
               width="36"
@@ -270,5 +274,6 @@
         </footer>
       </section>
     </footer>
+    <script src="./js/script.js"></script>
   </body>
 </html>
