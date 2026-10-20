@@ -20,10 +20,9 @@ const showCategories = (categories) => {
   const AllBtn = document.createElement("button");
   AllBtn.classList = "btn rounded-2xl";
   AllBtn.innerText = "ALL";
-  if ("ALL" == AllBtn.classList.add("btn-primary"))
-    AllBtn.addEventListener("click", function () {
-      getProduct();
-    });
+  AllBtn.addEventListener("click", function () {
+    getProduct();
+  });
   btnDiv.appendChild(AllBtn);
 
   categories.forEach((category) => {
@@ -31,11 +30,10 @@ const showCategories = (categories) => {
     createBtn.innerHTML = `
                 <button class="btn rounded-2xl ">${category}</button>
             `;
-      createBtn.addEventListener("click", function () {
-        findData(category);
-            if (`${category}===selectedCategory` ? createBtn.classList.add("btn-primary"):createBtn.classList.remove("btn-primary") );
+    createBtn.addEventListener("click", function () {
+      findData(category);
 
-      });
+    });
     btnDiv.append(createBtn);
   });
 };
@@ -72,7 +70,7 @@ const showAllProduct = (products) => {
              ${product.price}
             </p>
             <div class="card-actions">
-              <button class="btn w-[47%]">
+              <button class="btn w-[40%]">
                 <i class="fa-regular fa-eye"></i> Details
               </button>
               <button class="btn btn-primary w-[50%]">
@@ -86,4 +84,53 @@ const showAllProduct = (products) => {
     allCardData.append(newCard);
   });
 };
+
+const showInHome = () => {
+  fetch(productUrl)
+    .then((res) => res.json())
+    .then((products) => {
+      const menProducts = products
+        .filter((product) => product.category === "men's clothing")
+        .slice(0, 3);
+
+      const cardBody = document.getElementById("cardBody");
+      cardBody.innerHTML = "";
+
+      menProducts.forEach((product) => {
+        const homeCard = document.createElement("div");
+
+        homeCard.innerHTML = `
+          <div class="card shadow-sm">
+          <figure class="bg-gray-300">
+            <img src=${product.image} class="w-full p-10 h-[350px]" alt="Shoes" />
+          </figure>
+          <div class="card-body" >
+            <div class="flex w-full items-center justify-between">
+              <p class='bg-blue-200 p-1 rounded-2xl'>${product.category}</p>
+              <p class="  ml-20"><i class="fa-regular fa-star text-yellow-500"></i>  ${product.rating.rate}</p>
+            </div>
+            <h2 class="card-title">
+              ${product.title}
+            </h2>
+            <p class="font-bold text-2xl">$
+             ${product.price}
+            </p>
+            <div class="card-actions">
+              <button class="btn w-[47%]">
+                <i class="fa-regular fa-eye"></i> Details
+              </button>
+              <button class="btn btn-primary w-[50%]">
+                <i class="fa-solid fa-cart-shopping"></i>Add
+              </button>
+            </div>
+          </div>
+        </div>
+        `;
+
+        cardBody.appendChild(homeCard);
+      });
+    })
+    .catch((error) => console.error(error));
+};
+showInHome();
 getProduct();
